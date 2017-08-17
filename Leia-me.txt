@@ -1,0 +1,16 @@
+(------------Projeto Irineu-------------------)
+
+
+Atualizacoes---- 
+
+teste
+
+[X] fazendo primeiro commit
+
+
+[X] Necessidade da versao 2
+
+
+[X] criacao do repositorio e atualização dos arquivos
+
+
