@@ -1,0 +1,7 @@
+
+Título:	Sites importantes
+Conteúdo:	
+http://www.colorzilla.com/gradient-editor/ (gerador gradiente)
+https://www.cssmatic.com/box-shadow (gerador de sombras)
+http://paletton.com/ (Esquema de cores)
+http://caniuse.com/ (suporte de funcionalidades css3)

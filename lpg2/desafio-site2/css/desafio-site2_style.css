@@ -301,6 +301,7 @@ header nav ul li a.blog:hover {
 	margin-right:5px;
 	float:left;
     width: 24px;
+	
 }
 
 /*FIM CSS NAV2*/
@@ -402,8 +403,18 @@ footer p a.active {
 	
 }
 
-#rodape {
+#rodape-box {
 	
+	
+	
+		width: 100%;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-around;
+	
+}
+
+#rodape {
 	
 
 		clear:both;
@@ -413,6 +424,9 @@ footer p a.active {
    		border-bottom:1px solid #cccccc;
    		width: 100%;
 		margin-bottom:25px;
+		
+	
+
 	
 }
   #footer-fomated{
@@ -440,3 +454,13 @@ fim p a.active{
 	margin-top:-15px;
 	color:#000;
 	border-right: 2px solid #858585;*/
+	
+	#direitos-footer{
+		
+	clear:both;
+    width: 100%;
+    float: left;
+	
+	background-color:#CCCCCC
+		
+	}
