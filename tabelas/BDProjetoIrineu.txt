@@ -12,6 +12,7 @@ create table country(
 	cdCountry int auto_increment NOT NULL,
 	nome_country varchar(200) NOT NULL,
 	siglaCountry varchar(2)NOT NULL,
+	nacionalidade varchar (100) NOT NULL,
 
 	primary key (cdCountry)
 
@@ -88,17 +89,22 @@ create table pessoas(
 	nome_pai varchar(200),
 	nome_mae varchar(200),
 	ativo boolean,
-	cdEstCivil int,	
-    
-    	primary key (cdPessoa),
+	cd_estCivil int,	
+    cd_naturalidade int,
+
+    primary key (cdPessoa),
                  
 
-	foreign key (cdEstCivil) references estadoCivil(cd_estado_civil)
+	foreign key (cd_estCivil) references estadoCivil(cd_estado_civil),
+	
+	foreign key (cd_naturalidade) references cidade(cdCidade)
+
 );
 
 
 
 create table tipo_endereco(
+
 
 	descricao varchar(100) NOT NULL,
 	cd_pessoa int NOT NULL,
@@ -220,7 +226,7 @@ create table tipo_notificacao(
 
 -- criando TABELA NOTIFICACAO
 
-create table Notificacao(
+create table notificacao(
 	
 	cd_tipo_notificacao int NOT NULL,
     cd_pessoa int NOT NULL,
@@ -234,6 +240,39 @@ create table Notificacao(
 	foreign key (cd_pessoa) references estadoCivil(cdPessoa)             
 );
  
+ 
+ -- criando TABELA TIPO_Deficiencia
 
+create table tipo_deficiencia(
 	
+	cdTipoDeficiencia int auto_increment NOT NULL,
+	descricao varchar(200) NOT NULL,
     
+    primary key (cdTipoDeficiencia)
+                 
+);
+
+
+-- criando TABELA DEFICIENCIA
+
+create table deficiencia(
+	
+
+	tipo boolean NOT NULL,
+	observacoes varchar(200) NOT NULL,
+	cd_tipo_deficiencia int NOT NULL,
+    cd_pessoa int NOT NULL,
+
+    primary key (cd_tipo_deficiencia,cdPessoa),
+      
+	  
+	
+	foreign key (cd_tipo_deficiencia) references estadoCivil(cdTipoDeficiencia),
+
+	foreign key (cd_pessoa) references estadoCivil(cdPessoa)             
+);
+ 
+ 
+
+
+ 
