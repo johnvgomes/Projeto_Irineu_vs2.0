@@ -89,17 +89,18 @@ create table pessoas(
 	nome_pai varchar(200),
 	nome_mae varchar(200),
 	ativo boolean,
-	cd_estCivil int,	
-    cd_naturalidade int,
-
+	cd_estadocivil int,	
+	
     primary key (cdPessoa),
                  
 
-	foreign key (cd_estCivil) references estadoCivil(cd_estado_civil),
+	foreign key (cd_estadocivil) references estadoCivil(cdEstadoCivil)
 	
-	foreign key (cd_naturalidade) references cidade(cdCidade)
-
 );
+
+---retirado foreign key naturalidade pois nao tem tabela naturalidade;
+---	foreign key (cd_naturalidade) references cidade(cd_naturalidade)
+
 
 
 
@@ -143,7 +144,7 @@ create table tipo_telefone(
 	primary key (cd_pessoa,cd_telefone),
 
 	foreign key (cd_pessoa) references pessoas(cdPessoa),
-	foreign key (cd_telefone) references endereco(cdTelefone)
+	foreign key (cd_telefone) references telefone(cdTelefone)
 
 );
 
@@ -239,6 +240,20 @@ create table notificacao(
 
 	foreign key (cd_pessoa) references estadoCivil(cdPessoa)             
 );
+alterei para isso que esta abaixo******
+create table notificacao(
+	
+	cd_tiponotificacao int NOT NULL,
+    cd_pessoa int NOT NULL,
+
+    primary key (cd_tiponotificacao,cd_pessoa),
+      
+	  
+	
+	foreign key (cd_tiponotificacao) references tipo_notificacao(cdTipoNotificacao),
+
+	foreign key (cd_pessoa) references pessoas(cdPessoa)             
+);
  
  
  -- criando TABELA TIPO_Deficiencia
@@ -263,13 +278,13 @@ create table deficiencia(
 	cd_tipo_deficiencia int NOT NULL,
     cd_pessoa int NOT NULL,
 
-    primary key (cd_tipo_deficiencia,cdPessoa),
+    primary key (cd_tipo_deficiencia,cd_pessoa),
       
 	  
 	
-	foreign key (cd_tipo_deficiencia) references estadoCivil(cdTipoDeficiencia),
+	foreign key (cd_tipo_deficiencia) references tipo_deficiencia(cdTipoDeficiencia),
 
-	foreign key (cd_pessoa) references estadoCivil(cdPessoa)             
+	foreign key (cd_pessoa) references pessoas(cdPessoa)             
 );
  
  
