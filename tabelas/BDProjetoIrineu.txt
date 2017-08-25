@@ -240,7 +240,7 @@ create table notificacao(
 
 	foreign key (cd_pessoa) references estadoCivil(cdPessoa)             
 );
-alterei para isso que esta abaixo******
+alterei para isso que esta abaixo****** nao entendi umas parte
 create table notificacao(
 	
 	cd_tiponotificacao int NOT NULL,

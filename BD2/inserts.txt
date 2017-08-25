@@ -1,0 +1,247 @@
+----INSERT INTO PESSOAS
+
+INSERT INTO pessoas (
+
+nome,
+Data_nasc,
+RG,
+CPF,
+Passaporte,
+sexo,
+nome_pai,
+nome_mae,
+boolean
+) 
+
+	VALUES (
+
+joao Benzido da Silva,
+13/12/1996,
+34.235.358-75,
+324.423.242-27,
+E3FW5FG44GR9,
+masculino,
+Irineu Carlos da Silva,
+Maria Bortus da Silva,
+1
+);
+
+
+---INSERT INTO COUNTRY(
+
+nome_country,
+siglaCountry,
+nacionalidade
+
+)
+
+	VALUES (
+
+Brasil,
+BR,
+Brasileiro
+
+)
+
+
+---INSERT INTO ESTADO
+
+INSERT INTO estado (
+
+nome_estado,
+siglaEstado
+) 
+
+	VALUES (
+
+Santa Catarina,
+SC
+
+)
+
+---INSERT INTO CIDADE
+
+INSERT INTO cidade (
+
+nome_cidade
+
+)
+
+ VALUES (
+ 
+ Joaçaba
+ 
+ )
+
+
+---INSERT INTO ESTADO CIVIL
+
+INSERT INTO estadoCivil (
+
+descricao_ec
+
+) 
+
+	VALUES (
+
+Viuvo
+
+)
+
+
+---INSERT INTO ENDERECO
+
+INSERT INTO endereco (
+
+cep,
+rua,
+numero,
+bairro
+
+)
+	VALUES (
+ 
+89560-000,
+Santo Antonio,
+256,
+Amarante
+
+);
+
+---INSERT INTO TIPO_ENDERECO
+
+INSERT INTO tipo_endereco(
+
+descricao
+
+)
+
+	VALUES (
+	
+Interior, casa cor telha, dois andar.
+
+);
+
+---INSERT INTO TELEFONE
+
+INSERT INTO telefone(
+
+telefone
+
+)
+
+	VALUES (
+	
+(49) 0417070-7070
+
+);
+
+---INSERT INTO TIPO_TELEFONE
+
+INSERT INTO tipo_telefone(
+
+descricao 
+
+)
+
+	VALUES (
+	
+ultilizado para serviços em geral, a partir das 21:00 eu nao atendo
+
+);
+
+---INSERT INTO ESCOLARIDADE
+
+INSERT INTO escolaridade(
+
+descricao
+
+)
+
+	VALUES (
+	
+Superior
+
+);
+
+---INSERT INTO TIPOESCOLARIDADE
+
+INSERT INTO tipo_escolaridade(
+
+descricao
+
+)
+
+	VALUES (
+	
+Graduando Ciencia da Computaçao 
+
+);
+
+---INSERT INTO EMISSOR_RG
+
+INSERT INTO emissor_rg(
+
+emissor_rg
+
+)
+
+	VALUES (
+	
+SSPSCSC134
+
+);
+
+---INSERT INTO NOTIFICACAO
+
+INSERT INTO notificacao(
+
+
+
+)
+
+	VALUES (
+
+);
+
+---INSERT INTO TIPO_NOTIFICACAO
+
+INSERT INTO tipo_notificacao(
+
+descricao
+
+)
+
+	VALUES (
+	
+Normal
+
+);
+
+---INSERT INTO DEFICIENCIA
+
+INSERT INTO deficiencia(
+
+tipo
+
+)
+
+	VALUES (
+	
+0
+
+);
+
+---INSERT INTO TIPO_DEFICIENCIA
+
+INSERT INTO tipo_deficiencia(
+
+
+
+)
+
+	VALUES (
+
+);
+
+
