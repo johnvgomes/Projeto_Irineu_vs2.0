@@ -10,24 +10,28 @@ Passaporte,
 sexo,
 nome_pai,
 nome_mae,
-boolean
+ativo,
+cd_estadocivil
+
 ) 
 
 	VALUES (
 
-joao Benzido da Silva,
-13/12/1996,
-34.235.358-75,
-324.423.242-27,
-E3FW5FG44GR9,
-masculino,
-Irineu Carlos da Silva,
-Maria Bortus da Silva,
+'joao Benzido da Silva',
+13121996,
+3423535875,
+32442324227,
+'E3FW5FG44GR9',
+'masculino',
+'Irineu Carlos da Silva',
+'Maria Bortus da Silva',
 1
 );
 
 
----INSERT INTO COUNTRY(
+---INSERT INTO COUNTRY
+
+INSERT INTO country (
 
 nome_country,
 siglaCountry,
@@ -37,11 +41,11 @@ nacionalidade
 
 	VALUES (
 
-Brasil,
-BR,
-Brasileiro
+'Brasil',
+'BR',
+'Brasileiro'
 
-)
+);
 
 
 ---INSERT INTO ESTADO
@@ -54,10 +58,10 @@ siglaEstado
 
 	VALUES (
 
-Santa Catarina,
-SC
+'Santa Catarina',
+'SC'
 
-)
+);
 
 ---INSERT INTO CIDADE
 
@@ -69,9 +73,9 @@ nome_cidade
 
  VALUES (
  
- Joaçaba
+ 'Joaçaba'
  
- )
+ );
 
 
 ---INSERT INTO ESTADO CIVIL
@@ -84,9 +88,9 @@ descricao_ec
 
 	VALUES (
 
-Viuvo
+'Viuvo'
 
-)
+);
 
 
 ---INSERT INTO ENDERECO
@@ -102,15 +106,15 @@ bairro
 	VALUES (
  
 89560-000,
-Santo Antonio,
+'Santo Antonio',
 256,
-Amarante
+'Amarante'
 
 );
 
----INSERT INTO TIPO_ENDERECO
+---INSERT INTO TIPO_ENDERECO            deuuuuuuuu erroooooooo
 
-INSERT INTO tipo_endereco(
+INSERT INTO tipo_endereco( 
 
 descricao
 
@@ -118,7 +122,7 @@ descricao
 
 	VALUES (
 	
-Interior, casa cor telha, dois andar.
+'Interior, casa cor telha, dois andar.'
 
 );
 
@@ -132,11 +136,11 @@ telefone
 
 	VALUES (
 	
-(49) 0417070-7070
+04170707070
 
 );
 
----INSERT INTO TIPO_TELEFONE
+---INSERT INTO TIPO_TELEFONE             deuuuuuuuuu errooooooooooooooo
 
 INSERT INTO tipo_telefone(
 
@@ -146,7 +150,7 @@ descricao
 
 	VALUES (
 	
-ultilizado para serviços em geral, a partir das 21:00 eu nao atendo
+'ultilizado para serviços em geral, a partir das 21:00 eu nao atendo'
 
 );
 
@@ -160,11 +164,11 @@ descricao
 
 	VALUES (
 	
-Superior
+'Superior'
 
 );
 
----INSERT INTO TIPOESCOLARIDADE
+---INSERT INTO TIPOESCOLARIDADE           deuuuuuuu erroooooooooooooooooo
 
 INSERT INTO tipo_escolaridade(
 
@@ -174,11 +178,11 @@ descricao
 
 	VALUES (
 	
-Graduando Ciencia da Computaçao 
+'Graduando Ciencia da Computaçao'
 
 );
 
----INSERT INTO EMISSOR_RG
+---INSERT INTO EMISSOR_RG             deuuuuuuu erroooooooooooooooo
 
 INSERT INTO emissor_rg(
 
@@ -188,7 +192,7 @@ emissor_rg
 
 	VALUES (
 	
-SSPSCSC134
+'SSPSCSC134'
 
 );
 
