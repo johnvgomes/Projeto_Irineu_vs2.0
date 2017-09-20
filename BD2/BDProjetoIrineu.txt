@@ -11,7 +11,7 @@ create table country(
 	
 	cdCountry int auto_increment NOT NULL,
 	nome_country varchar(200) NOT NULL,
-	siglaCountry varchar(2)NOT NULL,
+	siglaCountry varchar(2) NOT NULL,
 	nacionalidade varchar (100) NOT NULL,
 
 	primary key (cdCountry)
@@ -26,7 +26,7 @@ create table estado(
 	cdEstado int auto_increment NOT NULL,
 	nome_estado varchar(200) NOT NULL,
 	siglaEstado varchar(2)NOT NULL,
-	cd_country int,
+	cd_country int NOT NULL,
 
 	primary key (cdEstado),
 
@@ -40,7 +40,7 @@ create table cidade(
 	
 	cdCidade int auto_increment NOT NULL,
 	nome_cidade varchar(200)NOT NULL,
-	cd_estado int,
+	cd_estado int NOT NULL,
 
 	primary key (cdCidade),
 
@@ -57,7 +57,7 @@ create table endereco(
 	rua varchar(200)NOT NULL,
 	numero int NOT NULL,
 	bairro varchar(100)NOT NULL,
-	cd_cidade int,
+	cd_cidade int NOT NULL,
 
 	primary key (cdEndereco),
 
@@ -69,52 +69,53 @@ create table endereco(
 -- criando a tabela estado civil
 
 
-create table estadoCivil(
-	cdEstadoCivil int NOT NULL,
+create table estadocivil(
+	cdEstadoCivil int auto_increment NOT NULL,
 	descricao_ec varchar(20) NOT NULL,
 
 	primary key (cdEstadoCivil)
 );
 
 
-create table pessoas(
+ -- pessoa fazer relacao inaria pessoa x pessoa em alternativa ao nome do pai e da mae nao vai dar certo pela recursividade
+ 
+
+create table pessoa(
 	
 	cdPessoa int auto_increment NOT NULL,
 	nome varchar(200) NOT NULL,
 	data_nasc date NOT NULL,
 	sexo varchar(20) NOT NULL,
 	RG int NOT NULL,
-	CPF int unique NOT NULL,
+	CPF varchar(20) unique NOT NULL,
 	passaporte varchar(200),
-	nome_pai varchar(200),
-	nome_mae varchar(200),
-	ativo boolean,
-	cd_estadocivil int,	
-	
+	nome_pai varchar(200) NOT NULL,
+	nome_mae varchar(200) NOT NULL,
+	ativo boolean NOT NULL,
+	cd_est_civil int,	
+    cd_naturalidade int,
+
     primary key (cdPessoa),
                  
 
-	foreign key (cd_estadocivil) references estadoCivil(cdEstadoCivil)
+	foreign key (cd_est_civil) references estadocivil(cdEstadoCivil),
 	
+	foreign key (cd_naturalidade) references cidade(cdCidade)
+
 );
-
----retirado foreign key naturalidade pois nao tem tabela naturalidade;
----	foreign key (cd_naturalidade) references cidade(cd_naturalidade)
-
-
 
 
 create table tipo_endereco(
 
-
+	cdTipoEndereco int auto_increment NOT NULL,
 	descricao varchar(100) NOT NULL,
 	cd_pessoa int NOT NULL,
 	cd_endereco int NOT NULL,
 
 
-	primary key (cd_pessoa,cd_endereco),
+	primary key (cdTipoEndereco),
 
-	foreign key (cd_pessoa) references pessoas(cdPessoa),
+	foreign key (cd_pessoa) references pessoa(cdPessoa),
 	foreign key (cd_endereco) references endereco(cdEndereco)
 
 );
@@ -135,15 +136,15 @@ create table telefone(
 
 create table tipo_telefone(
 
-	
+	cdTipoTelefone int auto_increment NOT NULL,
 	descricao varchar(100) NOT NULL,
 	cd_pessoa int NOT NULL,
 	cd_telefone int NOT NULL,
 
 
-	primary key (cd_pessoa,cd_telefone),
+	primary key (cdTipoTelefone),
 
-	foreign key (cd_pessoa) references pessoas(cdPessoa),
+	foreign key (cd_pessoa) references pessoa(cdPessoa),
 	foreign key (cd_telefone) references telefone(cdTelefone)
 
 );
@@ -167,15 +168,15 @@ create table escolaridade(
 
 create table tipo_escolaridade(
 
-	
+	cdTipoEscolaridade int auto_increment NOT NULL,
 	descricao varchar(100) NOT NULL,
 	cd_pessoa int NOT NULL,
 	cd_escolaridade int NOT NULL,
 
 
-	primary key (cd_pessoa,cd_escolaridade),
+	primary key (cdTipoEscolaridade),
 
-	foreign key (cd_pessoa) references pessoas(cdPessoa),
+	foreign key (cd_pessoa) references pessoa(cdPessoa),
 	foreign key (cd_escolaridade) references escolaridade(cdEscolaridade)
 
 );
@@ -184,18 +185,18 @@ create table tipo_escolaridade(
 create table emissor_RG(
 
 
-	cd_pessoa int NOT NULL,
-	emissor_rg varchar(30),
+	cd_pessoa int,
+	emissor_rg varchar(30) NOT NULL,
+    
 
 	primary key (cd_pessoa),
-
 	
-	foreign key (cd_pessoa) references pessoas(cdPessoa)
+	foreign key (cd_pessoa) references pessoa(cdPessoa)
 );
 
 create table usuario(
 
-	cd_pessoa int NOT NULL,
+	cd_pessoa int,
 	usuario varchar (100) NOT NULL,
 	senha varchar(50) NOT NULL,
 	email varchar (100) NOT NULL,
@@ -206,7 +207,7 @@ create table usuario(
 	primary key (cd_pessoa),
 
 	
-	foreign key (cd_pessoa) references pessoas(cdPessoa)
+	foreign key (cd_pessoa) references pessoa(cdPessoa)
 
 	
 	);
@@ -229,30 +230,17 @@ create table tipo_notificacao(
 
 create table notificacao(
 	
+	cdNotificacao int auto_increment NOT NULL,
 	cd_tipo_notificacao int NOT NULL,
     cd_pessoa int NOT NULL,
 
-    primary key (cd_tipo_notificacao,cdPessoa),
+    primary key (cdNotificacao),
       
 	  
 	
-	foreign key (cd_tipo_notificacao) references estadoCivil(cdTipoNotificacao),
+	foreign key (cd_tipo_notificacao) references tipo_notificacao(cdTipoNotificacao),
 
-	foreign key (cd_pessoa) references estadoCivil(cdPessoa)             
-);
-alterei para isso que esta abaixo****** nao entendi umas parte
-create table notificacao(
-	
-	cd_tiponotificacao int NOT NULL,
-    cd_pessoa int NOT NULL,
-
-    primary key (cd_tiponotificacao,cd_pessoa),
-      
-	  
-	
-	foreign key (cd_tiponotificacao) references tipo_notificacao(cdTipoNotificacao),
-
-	foreign key (cd_pessoa) references pessoas(cdPessoa)             
+	foreign key (cd_pessoa) references pessoa(cdPessoa)             
 );
  
  
@@ -272,22 +260,187 @@ create table tipo_deficiencia(
 
 create table deficiencia(
 	
-
+	cdDeficiencia int auto_increment NOT NULL,
 	tipo boolean NOT NULL,
 	observacoes varchar(200) NOT NULL,
 	cd_tipo_deficiencia int NOT NULL,
     cd_pessoa int NOT NULL,
 
-    primary key (cd_tipo_deficiencia,cd_pessoa),
+    primary key (cdDeficiencia),
       
 	  
-	
-	foreign key (cd_tipo_deficiencia) references tipo_deficiencia(cdTipoDeficiencia),
+	foreign key (cd_tipo_deficiencia) references Tipo_deficiencia(cdTipoDeficiencia),
 
-	foreign key (cd_pessoa) references pessoas(cdPessoa)             
+	foreign key (cd_pessoa) references pessoa(cdPessoa)             
 );
  
  
+ 
+ -- criando TABELA TAXA INSCRICAO
+ 
+ 
+create table taxa_inscricao(
+	
+	cdTaxaInscricao int auto_increment NOT NULL,
+	data_vencimento_boleto date NOT NULL,
+	taxa_inscricao decimal(6,2),
+	pago boolean NOT NULL,
+	data_pagamento date ,
+    
+    primary key (cdTaxaInscricao)
+	
+    
+);
+
+-- fazer trigger de controle para data_pagamento pago  e taxa em tabela taxa_incricao
+
+
+  -- criando TIPO PROCESSO SELETIVO
+
+
+create table tipo_processo_seletivo(
+	
+	cdTipoProcesso int auto_increment NOT NULL,
+	descricao varchar(200)NOT NULL ,
+	cd_taxa_inscricao int NOT NULL,
+
+    primary key (cdTipoProcesso),
+      
+	foreign key (cd_taxa_inscricao) references taxa_inscricao(cdTaxaInscricao)
+	       
+);
+ 
+ 
+ -- criando TABELA PROCESSO SELETIVO
+
+
+create table processo_seletivo(
+	
+	cdProcessoSeletivo int auto_increment NOT NULL,
+	data_inicio date NOT NULL,
+	data_fim date NOT NULL,
+	cd_tipo_processo int NOT NULL,
+
+    primary key (cdProcessoSeletivo),
+      
+	foreign key (cd_tipo_processo) references tipo_processo_seletivo(cdTipoProcesso)
+         
+
+);
+
+-- criando TABELA cotas
+
+-- fazer vinculaçao de tabela cotas e curso
+
+create table cota(
+	
+	cdCota int auto_increment NOT NULL,
+	descricao varchar(200) NOT NULL,
+
+	primary key (cdCota)
+
+          
+);
 
 
  
+ -- criando TABELA PROCESSO SELETIVO COTA
+
+
+create table processo_seletivo_cota(
+	
+	cdProcessoSeletivoCota int auto_increment NOT NULL,
+	vagas int NOT NULL,
+	cd_processo_seletivo int NOT NULL,
+	cd_cotas int NOT NULL,
+
+    primary key (cdProcessoSeletivoCota),
+      
+	foreign key (cd_processo_seletivo) references processo_seletivo(cdProcessoSeletivo),
+         
+	foreign key (cd_cotas) references cota(cdCota)
+
+);
+-- criando TABELA CURSO
+
+create table curso(
+	
+	cdCurso int auto_increment NOT NULL,
+	nome_curso varchar(200) NOT NULL,
+
+	primary key (cdCurso)
+
+	
+);
+
+ -- criando TABELA INSCRICAO
+
+create table inscricao(
+	
+	cdInscricao int auto_increment NOT NULL,
+	data_inscricao date NOT NULL,
+	primeira_opcurso int NOT NULL,
+	segunda_opcurso int,
+	cd_processo_seletivo int NOT NULL,
+	cd_pessoa int NOT NULL,
+
+	primary key (cdInscricao),
+
+	foreign key (primeira_opcurso) references curso(cdCurso),
+    foreign key (segunda_opcurso) references curso(cdCurso),	
+	foreign key (cd_pessoa) references pessoa(cdPessoa),
+    foreign key (cd_processo_seletivo) references processo_seletivo(cdProcessoSeletivo)
+         
+);
+
+ -- criando TABELA INSCRICAO-COTAS
+
+	create table inscricao_cotas(
+	
+	cdInscricaoCotas int auto_increment	NOT NULL,
+	cd_inscricao int NOT NULL,
+	cd_cota int NOT NULL,
+
+	primary key (cdInscricaoCotas),
+
+	
+    foreign key (cd_inscricao) references inscricao(cdInscricao),
+	foreign key (cd_cota) references cota(cdCota)
+
+
+);
+
+ -- criando TABELA ISENCAO
+
+create table isencao(
+	
+	cdIsencao int auto_increment NOT NULL,
+	motivo text NOT NULL,
+	homologada boolean NOT NULL,
+	cd_inscricao int NOT NULL,
+
+
+	primary key (cdIsencao),
+
+	
+	foreign key (cd_inscricao) references inscricao(cdInscricao)
+          
+);
+
+ -- criando TABELA COMISSAO
+
+create table comissao(
+	
+	cdComissao int auto_increment NOT NULL,
+	descricao varchar(200) NOT NULL,
+	cd_pessoa int NOT NULL,
+	cd_processo_seletivo int NOT NULL,
+
+	primary key (cdComissao),
+
+	foreign key (cd_pessoa) references pessoa(cdPessoa),
+	foreign key (cd_processo_seletivo) references processo_seletivo(cdProcessoSeletivo)
+         
+);
+
+
