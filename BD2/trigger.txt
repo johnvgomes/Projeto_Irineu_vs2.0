@@ -1,0 +1,10 @@
+-- after update
+
+
+
+CREATE DEFINER = CURRENT_USER TRIGGER `mydb`.`Isencao_AFTER_UPDATE` AFTER UPDATE ON `Isencao` FOR EACH ROW
+BEGIN
+	IF Isencao.Homologado <> 0 THEN
+		UPDATE Inscricao.Pago SET pago = 1 WHERE Inscricao.idInscricao = Isencao.Inscricao_idInscricao;
+	END IF;
+END
