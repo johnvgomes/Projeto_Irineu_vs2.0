@@ -1,0 +1,68 @@
+DELIMITER $$
+
+CREATE PROCEDURE Insert_Atomic		(	IN nome varchar(200),
+										IN data_nasc date,
+										IN sexo varchar(20),
+										IN RG int,
+										IN CPF varchar(20),
+										IN passaporte varchar(200),
+										IN nome_pai varchar(200),
+										IN nome_mae varchar(200),
+										IN ativo boolean,
+										IN cd_est_civil int,	
+										IN cd_naturalidade int,
+                                        IN cdTelefone int,
+										IN telefone int,
+                                        IN cdTipoTelefone int,
+										IN descricao varchar(100),
+										IN cd_pessoa int,
+										IN cd_telefone int,
+                                        IN cdTipoEndereco int,
+										IN descricao varchar(100),
+										IN cd_pessoa int,
+										IN cd_endereco int,
+										IN cd_pessoa int,
+										IN usuario varchar (100),
+										IN senha varchar(50),
+										IN email varchar (100),
+										IN tipo varchar (50),
+										IN data_cad date,
+										IN data_last_update  date 
+	
+
+)
+
+
+BEGIN
+	
+    DECLARE cdPessoa INT;
+	DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+		ROLLBACK;
+    END;
+    START TRANSACTION;
+		 
+		 INSERT INTO Pessoa (nome, data_nasc, sexo, RG, CPF, passaporte, nomePai, nomeMae, ativo, cd_est_civil, cd_naturalidade) VALUES
+         (nome, data_nasc, sexo, RG, CPF, passaporte, nomePai, nomeMae, ativo, cd_est_civil, cd_naturalidade);
+         
+         
+         INSERT INTO telefone (cdTelefone, telefone) VALUES
+         (cdTelefone, telefone);
+         
+         
+         SET cdPessoa = (SELECT cdPessoa FROM pessoa WHERE pessoa.CPF = CPF);
+         
+         
+		 INSERT INTO tipo_telefone (cdTipoTelefone, descricao, cd_pessoa, cd_telefone) VALUES
+         (cdTipoTelefone, descricao, cd_pessoa, cd_telefone) ;
+         
+         INSERT INTO endereco (cdEndereco,  cep, rua, bairro, cd_cidade) VALUES
+         (cdEndereco,  cep, rua, bairro, cd_cidade) ;
+         
+         INSERT INTO tipo_endereco (cdTipoEndereco,  descricao, cd_pessoa, cd_endereco) VALUES
+         (cdEndereco,  cep, rua, bairro, cd_cidade) ;
+         
+         INSERT INTO Usuario (cdUsuario, usuario, senha, email, tipo, data_cad, data_last_update) VALUES
+         (cdUsuario, usuario, senha, email, tipo, data_cad, data_last_update);
+    COMMIT;
+END$$

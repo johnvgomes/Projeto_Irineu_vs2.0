@@ -1,10 +1,12 @@
--- after update
+-- after update isencao
 
 
 
-CREATE DEFINER = CURRENT_USER TRIGGER `mydb`.`Isencao_AFTER_UPDATE` AFTER UPDATE ON `Isencao` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `processo_seletivo_vs3`.`isencao_AFTER_UPDATE` AFTER UPDATE ON `isencao` FOR EACH ROW
 BEGIN
-	IF Isencao.Homologado <> 0 THEN
-		UPDATE Inscricao.Pago SET pago = 1 WHERE Inscricao.idInscricao = Isencao.Inscricao_idInscricao;
+
+IF isencao.homologada <> 0 THEN
+		UPDATE taxa_inscricao.pago SET pago = 1 WHERE inscricao.cdInscricao = isencao.cd_inscricao;
 	END IF;
+
 END
