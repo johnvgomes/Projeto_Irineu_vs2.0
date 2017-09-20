@@ -1,0 +1,11 @@
+
+ -- ---------------------------------------------------------------------
+ -- insert na tabela tipo-processo-seletivo------------------------------
+ -- ---------------------------------------------------------------------
+
+
+ INSERT INTO `tipo_processo_seletivo`(`descricao`, `cd_taxa_inscricao`) VALUES 
+ 
+ ('exame de classificação',1),
+ ('vestibular',2),
+ ('concurso',3);

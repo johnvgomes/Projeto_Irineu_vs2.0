@@ -1,0 +1,52 @@
+
+ -- ---------------------------------------------------------------------
+ -- insert na tabela pessoa ---------------------------------------------
+ -- ---------------------------------------------------------------------
+
+
+
+ -- pessoa fazer relacao inaria pessoa x pessoa em alternativa ao nome do pai e da mae nao dara certo!!!
+ -- MOtivo: recursividade dos dados
+
+
+-- ---------------------------------------------------------------------
+ -- JOHN ---------------------------------------------
+ -- ---------------------------------------------------------------------
+
+
+ INSERT INTO `pessoa`(`nome`, `data_nasc`, `sexo`, `RG`, `CPF`, `passaporte`, `nome_pai`, `nome_mae`, `ativo`, `cd_est_civil`, `cd_naturalidade`) VALUES 
+ 
+ 
+ -- 5001 igual a jundiai
+ 
+('John Victor Gomes','1998-01-13','Masculino',444531427,35642529838, 'nao-possui','Gilmar','Ana Paula',1,1,5001);
+
+
+ 
+ 
+ -- ---------------------------------------------------------------------
+ -- cherobim ---------------------------------------------
+ -- ---------------------------------------------------------------------
+
+  
+ INSERT INTO `pessoa`(`nome`, `data_nasc`, `sexo`, `RG`, `CPF`, `passaporte`, `nome_pai`, `nome_mae`, `ativo`, `cd_est_civil`, `cd_naturalidade`) VALUES 
+ 
+ 
+ -- 5270 igual a Sao PAULO
+
+ ('Lucas dos Santos Cherobim','1996-08-15','Masculino',412335629,'42176812318','nao-possui','Fernando','Maria',1,1,5270);
+
+ 
+ 
+ -- ---------------------------------------------------------------------
+ -- William vector ---------------------------------------------
+ -- ---------------------------------------------------------------------
+
+  
+ INSERT INTO `pessoa`(`nome`, `data_nasc`, `sexo`, `RG`, `CPF`, `passaporte`, `nome_pai`, `nome_mae`, `ativo`, `cd_est_civil`, `cd_naturalidade`) VALUES 
+ 
+ 
+ -- 5270 igual a Videira
+
+ ('William Walter','1997-05-22','Masculino',123456629,'54321812318','nao-possui','Carlos','Claudia',1,1,4801);
+
