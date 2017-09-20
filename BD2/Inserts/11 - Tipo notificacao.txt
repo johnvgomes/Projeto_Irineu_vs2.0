@@ -1,0 +1,14 @@
+
+ -- ---------------------------------------------------------------------
+ -- insert na tabela tipo-notificao -----------------------------------------
+ -- ---------------------------------------------------------------------
+
+ INSERT INTO `tipo_notificacao`(`descricao`) VALUES 
+ 
+ ('novo processo aberto'),
+ ('inscrição validada'),
+ ('inscrição aceita'),
+ ('última semana para inscrição'),
+ ('último dia para inscrição');
+
+

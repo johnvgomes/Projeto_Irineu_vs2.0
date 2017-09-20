@@ -1,0 +1,12 @@
+
+ -- ---------------------------------------------------------------------
+ -- insert na tabela processo-seletivo------------------------------
+ -- ---------------------------------------------------------------------
+
+INSERT INTO `processo_seletivo`( `data_inicio`, `data_fim`, `cd_tipo_processo`) VALUES ('2017-09-19','2017-10-19',1);
+
+
+INSERT INTO `processo_seletivo`( `data_inicio`, `data_fim`, `cd_tipo_processo`) VALUES ('2017-09-19','2017-10-19',2);
+
+
+INSERT INTO `processo_seletivo`( `data_inicio`, `data_fim`, `cd_tipo_processo`) VALUES ('2017-09-19','2017-10-19',3);

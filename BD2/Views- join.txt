@@ -1,0 +1,12 @@
+ CREATE VIEW `ViewPessoaDados` AS SELECT Pessoa.*, Endereco.Rua, Endereco.NumeroEndereco,
+Endereco.CEP, Endereco.Bairro, Endereco.Complemento, Cidade.NomeCidade, Estado.NomeEstado
+, Pais.NomePais, Telefone.NumeroTelefone, Telefone.Comercial, Usuario.Email,
+Usuario.DataCadastro FROM Pessoa 
+LEFT JOIN Endereco ON Pessoa.idPessoa = Endereco.Pessoa_id
+LEFT JOIN Cidade ON Endereco.Cidade_idCidade = Cidade.idCidade
+LEFT JOIN Estado ON Cidade.Estado_idEstado = Estado.idEstado
+LEFT JOIN Pais ON Estado.Pais_idPais = Pais.idPais
+LEFT JOIN Telefone ON Pessoa.idPessoa = Telefone.Pessoa_id
+LEFT JOIN Usuario On Usuario.Pessoa_idPessoa = Pessoa.idPessoa
+;
+

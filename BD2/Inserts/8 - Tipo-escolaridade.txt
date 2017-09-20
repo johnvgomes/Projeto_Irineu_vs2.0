@@ -1,0 +1,12 @@
+
+ -- ---------------------------------------------------------------------
+ -- insert na tabela ESCOLARIDADE ---------------------------------------
+ -- ---------------------------------------------------------------------
+
+ INSERT INTO `tipo_escolaridade`(`descricao`, `cd_pessoa`, `cd_escolaridade`) VALUES ('publica',1,4);
+
+ 
+ INSERT INTO `tipo_escolaridade`(`descricao`, `cd_pessoa`, `cd_escolaridade`) VALUES ('particular',2,3);
+
+ 
+ INSERT INTO `tipo_escolaridade`(`descricao`, `cd_pessoa`, `cd_escolaridade`) VALUES ('bolsa-integral',3,3);

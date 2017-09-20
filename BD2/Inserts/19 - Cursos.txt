@@ -1,0 +1,13 @@
+
+ -- ---------------------------------------------------------------------
+ -- insert na tabela processo-seletivo------------------------------
+ -- ---------------------------------------------------------------------
+
+
+ INSERT INTO `curso`(`nome_curso`) VALUES 
+ 
+ ('Técnico em Agropecuaria'),
+ ('Técnico em Informatica'),
+ ('Técnico em Eletronica'),
+ ('Bacharelado em Ciencias da Computação'),
+ ('Licenciatura em Pedagogia');

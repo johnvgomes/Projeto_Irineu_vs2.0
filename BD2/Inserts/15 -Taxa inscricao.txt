@@ -1,0 +1,12 @@
+
+ -- ---------------------------------------------------------------------
+ -- insert na tabela taxa-inscricao -----------------------------------
+ -- ---------------------------------------------------------------------
+ 
+ INSERT INTO `taxa_inscricao`(`data_vencimento_boleto`, `taxa_inscricao`, `pago`) VALUES ('2017-09-26',20.00,0);
+
+ 
+ INSERT INTO `taxa_inscricao`(`data_vencimento_boleto`, `taxa_inscricao`, `pago`, `data_pagamento`) VALUES ('2017-09-26',20.00,1,'2017-09-22');
+
+ 
+ INSERT INTO `taxa_inscricao`(`data_vencimento_boleto`, `taxa_inscricao`, `pago`, `data_pagamento`) VALUES ('2017-09-26',20.00,1,'2017-09-20');

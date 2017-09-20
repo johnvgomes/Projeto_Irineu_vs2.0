@@ -1,0 +1,45 @@
+DELIMITER $$
+
+CREATE PROCEDURE InsertPessoaContaAtomico(IN Nome VARCHAR(200), 
+										  IN DataNascimento DATE, 
+                                          IN RG VARCHAR(15), 
+                                          IN idEmissorRG INT, 
+                                          IN SuperCPF CHAR(15),
+                                          IN Sexo VARCHAR(45),
+                                          IN NomePai VARCHAR(200),
+                                          IN NomeMae VARCHAR(200),
+                                          IN Passaporte VARCHAR(50),
+                                          IN NaturalidadeID INT, 
+                                          IN Usuario VARCHAR(100), 
+                                          IN Senha CHAR(64), 
+                                          IN Email VARCHAR(150),
+                                          IN NumeroTelefone VARCHAR(45),
+                                          IN TipoTelefone VARCHAR(45),
+                                          IN Rua VARCHAR(200),
+                                          IN CEP INT,
+                                          IN Bairro VARCHAR(100),
+                                          IN Tipo INT,
+                                          IN Cidade INT
+                                          )
+BEGIN
+	
+    DECLARE pessoaid INT;
+	DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+		ROLLBACK;
+    END;
+    START TRANSACTION;
+		 
+		 INSERT INTO Pessoa (Nome, DataNascimento, RG, idEmissorRG, CPF, Sexo, NomePai, NomeMae, Passaporte, NaturalidadeID) VALUES
+         (Nome, DataNascimento, RG, idEmissorRG, SuperCPF, Sexo, NomePai, NomeMae, Passaporte, NaturalidadeID);
+         
+         SET pessoaid = (SELECT idPessoa FROM Pessoa WHERE Pessoa.CPF = SuperCPF);
+         INSERT INTO Telefone (NumeroTelefone, Pessoa_id, TipoTelefone_idTipoTelefone) VALUES
+         (NumeroTelefone, pessoaid ,TipoTelefone);
+         INSERT INTO Endereco (Pessoa_id, Rua, CEP, Bairro, table1_TipoID, Cidade_idCidade) VALUES
+         (pessoaid, Rua, CEP, Bairro, Tipo, Cidade);
+         INSERT INTO Usuario (Pessoa_idPessoa, Usuario, Senha, Email, DataCadastro, Ativo) VALUES
+         (pessoaid, Usuario, Senha, Email, NOW(), 1);
+    COMMIT;
+END$$
+

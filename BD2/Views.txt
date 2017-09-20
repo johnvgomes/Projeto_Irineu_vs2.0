@@ -1,0 +1,10 @@
+CREATE VIEW `view_pessoa_naturalidade_nacionalidade` AS 
+
+
+SELECT p.nome, c.nome_cidade, ct.nacionalidade from pessoa as p
+
+INNER JOIN cidade AS c ON (p.cd_naturalidade = c.cdCidade)
+    
+INNER JOIN estado AS e ON (c.cd_estado = e.cdEstado)
+
+INNER JOIN country AS ct ON (e.cd_country = ct.cdCountry);

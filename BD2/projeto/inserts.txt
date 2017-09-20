@@ -105,7 +105,7 @@ bairro
 )
 	VALUES (
  
-89560-000,
+89560000,
 'Santo Antonio',
 256,
 'Amarante'

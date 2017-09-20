@@ -1,0 +1,10 @@
+
+ -- ---------------------------------------------------------------------
+ -- insert na tabela tipo-deficiencia -----------------------------------
+ -- ---------------------------------------------------------------------
+ 
+ INSERT INTO `tipo_deficiencia`(`descricao`) VALUES ('mental');
+ 
+ INSERT INTO `tipo_deficiencia`(`descricao`) VALUES ('braço quebrado');
+
+  INSERT INTO `tipo_deficiencia`(`descricao`) VALUES ('cegueira');

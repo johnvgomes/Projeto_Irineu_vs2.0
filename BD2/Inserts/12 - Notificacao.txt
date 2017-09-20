@@ -1,0 +1,27 @@
+
+ -- ---------------------------------------------------------------------
+ -- insert na tabela notificao -----------------------------------------
+ -- ---------------------------------------------------------------------
+ 
+ 
+ INSERT INTO `notificacao`(`cd_tipo_notificacao`, `cd_pessoa`) VALUES
+ 
+ (1,1),
+ (2,1),
+ (3,1);
+
+
+  INSERT INTO `notificacao`(`cd_tipo_notificacao`, `cd_pessoa`) VALUES
+ 
+ (1,2),
+ (3,2),
+ (4,2);
+
+
+  INSERT INTO `notificacao`(`cd_tipo_notificacao`, `cd_pessoa`) VALUES
+ 
+ (1,3),
+ (2,3),
+ (3,3),
+ (4,3),
+ (5,3);

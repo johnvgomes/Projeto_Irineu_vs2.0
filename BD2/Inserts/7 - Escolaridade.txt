@@ -1,0 +1,14 @@
+
+ -- ---------------------------------------------------------------------
+ -- insert na tabela ESCOLARIDADE ---------------------------------------
+ -- ---------------------------------------------------------------------
+
+
+	INSERT INTO `escolaridade`(`descricao`) VALUES
+	
+	('Fundamental - Incompleto'),
+	('Fundamental - Completo'),
+	('Médio - Incompleto'),
+	('Médio - Completo'),
+	('Superior - Incompleto'),
+	('Superior - Completo');
